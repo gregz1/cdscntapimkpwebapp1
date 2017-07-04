@@ -1,5 +1,5 @@
 ﻿
-namespace CdscntMkpAPIWebApplication.Enumeration
+namespace cdscntapimkpwebapp1.Enumeration
 {
     public enum EnvironmentEnum
     {
