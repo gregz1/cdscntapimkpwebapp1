@@ -1,9 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using cdscntapimkpwebapp1.Enumeration
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - cdscntapimkpwebapp1</title>
+    <title>@ViewData["Title"] - CdscntMkpAPIWebApplication</title>
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -15,6 +16,7 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+  
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -26,14 +28,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-controller="Home" asp-action="Index" class="navbar-brand">cdscntapimkpwebapp1</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Cdiscount Marketplace API WebApp</a>
             </div>
             <div class="navbar-collapse collapse">
-                <!--<ul class="nav navbar-nav">
-                    <li><a asp-controller="Home" asp-action="Index">tu te calmes ok !</a></li>
-                    <li><a asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>-->
+                <ul class="nav navbar-nav">
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Product Manager<span class="caret"></span></a>
@@ -51,16 +54,55 @@
 
                         </ul>
                     </li>
-                    </ul>
-                    @await Html.PartialAsync("_LoginPartial")
-</div>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Offer manager<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("SubmitOfferPackage", "SubmitOfferPackageRequest", "OfferManager")</li>
+                            <li>@Html.ActionLink("GetOfferPackageSubmissionResult", "GetOfferPackageSubmissionResultRequest", "OfferManager")</li>
+                            <li>@Html.ActionLink("GetOfferList", "GetOfferListRequest", "OfferManager")</li>
+                            <li>@Html.ActionLink("GetOfferListPaginated", "GetOfferListPaginatedRequest", "OfferManager")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Order manager<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("GetOrderList", "GetOrderListRequest", "OrderManager")</li>
+                            <li>@Html.ActionLink("ValidateOrderList", "ValidateOrderListRequest", "OrderManager")</li>
+                            <li>@Html.ActionLink("CreateRefundVoucher", "CreateRefundVoucherRequest", "OrderManager")</li>
+                            <li>@Html.ActionLink("ManageParcel", "ManageParcelRequest", "OrderManager")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CRM manager<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("GetOrderClaimList", "GetOrderClaimListRequest", "CRMManager")</li>
+                            <li>@Html.ActionLink("GetOfferQuestionList", "GetOfferQuestionListRequest", "CRMManager")</li>
+                            <li>@Html.ActionLink("CloseDiscussionList", "CloseDiscussionListRequest", "CRMManager")</li>
+                            <li>@Html.ActionLink("GetDiscussionMailList", "GetDiscussionMailListRequest", "CRMManager")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account manager<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("GetSellerInformation", "GetSellerInformationRequest", "AccountManager")</li>
+                            <li>@Html.ActionLink("GetSellerIndicators", "GetSellerIndicatorsRequest", "AccountManager")</li>
+                            <li>@Html.ActionLink("GetGlobalConfiguration", "GetGlobalConfigurationRequest", "AccountManager")</li>
+                            <!--<li>@Html.ActionLink("GetParcelShopList", "GetParcelShopListRequest", "AccountManager")</li>
+                            <li>@Html.ActionLink("SubmitRelaysFile", "SubmitRelaysFileRequest", "AccountManager")</li>
+                            <li>@Html.ActionLink("GetRelaysFileSubmissionResult", "GetRelaysFileSubmissionResultRequest", "AccountManager")</li>-->
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2016 - cdscntapimkpwebapp1</p>
+            <br />
+            <br />
+            <p>&copy; 2017 - CdscntMkpAPIWebApplication</p>
         </footer>
     </div>
 
@@ -68,9 +110,10 @@
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/lib/angular/angular.js"></script>
     </environment>
     <environment names="Staging,Production">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.3.min.js"
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
                 asp-fallback-test="window.jQuery">
         </script>
@@ -78,9 +121,13 @@
                 asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
         </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"
+                asp-fallback-src="~/lib/angular/angular.min.js"
+                asp-fallback-test="window.angular">
+        </script>
     </environment>
 
     @RenderSection("scripts", required: false)
+
 </body>
 </html>
