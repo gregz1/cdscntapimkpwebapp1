@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using WebApplication.Models;
-using WebApplication.Models.ManageViewModels;
-using WebApplication.Services;
+using cdscntapimkpwebapp1.Models;
+using cdscntapimkpwebapp1.Models.ManageViewModels;
+using cdscntapimkpwebapp1.Services;
 
-namespace WebApplication.Controllers
+namespace cdscntapimkpwebapp1.Controllers
 {
     [Authorize]
     public class ManageController : Controller

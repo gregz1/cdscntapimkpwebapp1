@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using WebApplication.Data;
-using WebApplication.Models;
-using WebApplication.Services;
+using cdscntapimkpwebapp1.Data;
+using cdscntapimkpwebapp1.Models;
+using cdscntapimkpwebapp1.Services;
 
-namespace WebApplication
+namespace cdscntapimkpwebapp1
 {
     public class Startup
     {

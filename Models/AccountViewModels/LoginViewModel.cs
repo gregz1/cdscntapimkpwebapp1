@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApplication.Models.AccountViewModels
+namespace cdscntapimkpwebapp1.Models.AccountViewModels
 {
     public class LoginViewModel
     {

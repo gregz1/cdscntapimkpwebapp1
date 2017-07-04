@@ -229,6 +229,7 @@
 "C:\Users\gregory.tall\Documents\GitHub\cdscntapimkpwebapp1\Data\Migrations\00000000000000_CreateIdentitySchema.cs"
 "C:\Users\gregory.tall\Documents\GitHub\cdscntapimkpwebapp1\Data\Migrations\00000000000000_CreateIdentitySchema.Designer.cs"
 "C:\Users\gregory.tall\Documents\GitHub\cdscntapimkpwebapp1\Data\Migrations\ApplicationDbContextModelSnapshot.cs"
+"C:\Users\gregory.tall\Documents\GitHub\cdscntapimkpwebapp1\Enumeration\EnvironmentEnum.cs"
 "C:\Users\gregory.tall\Documents\GitHub\cdscntapimkpwebapp1\Models\ApplicationUser.cs"
 "C:\Users\gregory.tall\Documents\GitHub\cdscntapimkpwebapp1\Models\AccountViewModels\ExternalLoginConfirmationViewModel.cs"
 "C:\Users\gregory.tall\Documents\GitHub\cdscntapimkpwebapp1\Models\AccountViewModels\ForgotPasswordViewModel.cs"
