@@ -10,7 +10,7 @@ namespace WebApplication
     public class Program
     {
         public static void Main(string[] args)
-        {           
+        {
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
@@ -18,6 +18,7 @@ namespace WebApplication
                 .UseStartup<Startup>()
                 .UseUrls(args[0])
                 .Build();
+
             host.Run();
         }
     }
