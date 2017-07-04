@@ -1,0 +1,70 @@
+﻿@model cdscntapimkpwebapp1.Models.GetAllModelListMessage
+
+@{
+    ViewData["Title"] = "GetAllModelList";
+}
+
+<link rel="stylesheet" href="src/jquery.treefilter.css">
+<br />
+<br />
+<div>
+    <div class="container">
+        <h2>GetAllModelListMessage</h2>
+
+      @if (!Model._OperationSuccess)
+      {
+
+        <div class="alert alert-danger">
+            <strong>Failed!</strong> : @Model. error message : @Model._ErrorMessage
+        </div>
+      }
+      else if(Model._ErrorMessage!="")
+      {
+        <div class="alert alert-warning">
+            <strong>Warning!</strong> error message : @Model._ErrorMessage.
+        </div>
+      }
+      else
+      {
+        <div class="alert alert-success">
+            <strong>Success!</strong>
+        </div>
+      }
+
+
+
+        <div class="panel-group">
+            <div class="panel panel-default">
+                @if (Model._RequestXML!="")
+                {
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#RequestXML">Click  to display the XML Request</a>
+                        </h4>
+                    </div>
+                    <div id="RequestXML" class="panel-collapse collapse">
+                        <div class="panel-body"><pre lang="xml"> @Html.DisplayFor(model => model._RequestXML)</pre></div>
+                    </div>
+                }
+            </div>
+                @if (Model._MessageXML != "")
+                {
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#MessageXML">Click  to display the XML Message</a>
+                            </h4>
+                        </div>
+                        <div id="MessageXML" class="panel-collapse collapse">
+                            <div class="panel-body"><pre lang="xml"> @Html.DisplayFor(model => model._MessageXML)</pre></div>
+                        </div>
+                    </div>
+                }
+        </div>
+    </div>
+
+    <div>
+
+    </div>
+</div>
+

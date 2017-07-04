@@ -29,13 +29,31 @@
                 <a asp-controller="Home" asp-action="Index" class="navbar-brand">cdscntapimkpwebapp1</a>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <!--<ul class="nav navbar-nav">
                     <li><a asp-controller="Home" asp-action="Index">tu te calmes ok !</a></li>
                     <li><a asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
-                @await Html.PartialAsync("_LoginPartial")
-            </div>
+                </ul>-->
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Product Manager<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("GetAllAllowedCategoryTree", "GetAllAllowedCategoryTreeRequest", "ProductManager")</li>
+                            <li>@Html.ActionLink("SubmitProductPackage", "SubmitProductPackageRequest", "ProductManager")</li>
+                            <li>@Html.ActionLink("GetAllowedCategoryTree", "GetAllowedCategoryTreeRequest", "ProductManager")</li>
+                            <li>@Html.ActionLink("GetAllModelList", "GetAllModelListRequest", "ProductManager")</li>
+                            <li>@Html.ActionLink("GetModelList", "GetModelListRequest", "ProductManager")</li>
+                            <li>@Html.ActionLink("GetProductList", "GetProductListRequest", "ProductManager")</li>
+                            <li>@Html.ActionLink("GetBrandList", "GetBrandListRequest", "ProductManager")</li>
+                            <li>@Html.ActionLink("GetProductPackageSubmissionResult", "GetProductPackageSubmissionResultRequest", "ProductManager")</li>
+                            <li>@Html.ActionLink("GetProductPackageMatchingFileData", "GetProductPackageMatchingFileDataRequest", "ProductManager")</li>
+                            <li>@Html.ActionLink("GetProductListByIdentifier", "GetProductListByIdentifierRequest", "ProductManager")</li>
+
+                        </ul>
+                    </li>
+                    </ul>
+                    @await Html.PartialAsync("_LoginPartial")
+</div>
         </div>
     </div>
     <div class="container body-content">
