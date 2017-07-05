@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using cdscntapimkpwebapp1.Data;
 using cdscntapimkpwebapp1.Models;
 using cdscntapimkpwebapp1.Services;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace cdscntapimkpwebapp1
 {
@@ -48,7 +49,6 @@ namespace cdscntapimkpwebapp1
                 .AddDefaultTokenProviders();
 
             services.AddMvc();
-
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();

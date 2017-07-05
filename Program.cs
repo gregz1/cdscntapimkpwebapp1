@@ -14,9 +14,10 @@ namespace cdscntapimkpwebapp1
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIISIntegration()
+                //.UseIISIntegration()
                 .UseStartup<Startup>()
-                .UseUrls(args[0])
+                
+               // .UseUrls(args[0])
                 .Build();
 
             host.Run();

@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.0",
-    "signature": "9a995b56ec8286cd82005d9b95b0a8bf046d9aa6"
+    "signature": "48a48fcb6e9e41699443aff3463ef4289530bfe7"
   },
   "compilationOptions": {
     "defines": [
@@ -17,7 +17,6 @@
     ".NETCoreApp,Version=v1.0": {
       "cdscntapimkpwebapp1/1.0.0": {
         "dependencies": {
-          "Microsoft.NETCore.App": "1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
           "Microsoft.AspNetCore.Diagnostics": "1.0.0",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "1.0.0",
@@ -33,10 +32,11 @@
           "Microsoft.Extensions.Logging": "1.0.0",
           "Microsoft.Extensions.Logging.Console": "1.0.0",
           "Microsoft.Extensions.Logging.Debug": "1.0.0",
+          "Microsoft.NETCore.App": "1.0.0",
           "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
-          "System.ServiceModel.Primitives": "4.3.0",
           "System.ServiceModel.Http": "4.3.0",
-          "System.Xml.XmlSerializer": "4.0.11"
+          "System.ServiceModel.Primitives": "4.3.0",
+          "System.Xml.XmlSerializer": "4.3.0"
         },
         "runtime": {
           "dotnetmvc.dll": {}
@@ -2749,7 +2749,7 @@
           "System.Xml.ReaderWriter": "4.3.0",
           "System.Xml.XDocument": "4.3.0",
           "System.Xml.XmlDocument": "4.3.0",
-          "System.Xml.XmlSerializer": "4.0.11"
+          "System.Xml.XmlSerializer": "4.3.0"
         },
         "runtime": {
           "lib/netstandard1.3/System.Private.DataContractSerialization.dll": {}
@@ -2806,7 +2806,7 @@
           "System.Threading.Timer": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0",
           "System.Xml.XmlDocument": "4.3.0",
-          "System.Xml.XmlSerializer": "4.0.11"
+          "System.Xml.XmlSerializer": "4.3.0"
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.3/System.Private.ServiceModel.dll": {
@@ -3518,7 +3518,7 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
-      "System.Xml.XmlSerializer/4.0.11": {
+      "System.Xml.XmlSerializer/4.3.0": {
         "dependencies": {
           "System.Collections": "4.3.0",
           "System.Globalization": "4.3.0",
@@ -5325,10 +5325,10 @@
       "serviceable": true,
       "sha512": "sha512-lJ8AxvkX7GQxpC6GFCeBj8ThYVyQczx2+f/cWHJU8tjS7YfI6Cv6bon70jVEgs2CiFbmmM8b9j1oZVx0dSI2Ww=="
     },
-    "System.Xml.XmlSerializer/4.0.11": {
+    "System.Xml.XmlSerializer/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-FrazwwqfIXTfq23mfv4zH+BjqkSFNaNFBtjzu3I9NRmG8EELYyrv/fJnttCIwRMFRR/YKXF1hmsMmMEnl55HGw=="
+      "sha512": "sha512-MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q=="
     },
     "Libuv/1.9.0": {
       "type": "package",

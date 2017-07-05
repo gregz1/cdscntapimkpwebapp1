@@ -222,7 +222,7 @@
 -r:"C:\Users\gregory.tall\.nuget\packages\System.Threading.Timer\4.3.0\ref\netstandard1.2\System.Threading.Timer.dll"
 -r:"C:\Users\gregory.tall\.nuget\packages\System.Xml.ReaderWriter\4.3.0\ref\netstandard1.3\System.Xml.ReaderWriter.dll"
 -r:"C:\Users\gregory.tall\.nuget\packages\System.Xml.XDocument\4.3.0\ref\netstandard1.3\System.Xml.XDocument.dll"
--r:"C:\Users\gregory.tall\.nuget\packages\System.Xml.XmlSerializer\4.0.11\ref\netstandard1.3\System.Xml.XmlSerializer.dll"
+-r:"C:\Users\gregory.tall\.nuget\packages\System.Xml.XmlSerializer\4.3.0\ref\netstandard1.3\System.Xml.XmlSerializer.dll"
 -resource:"C:\Users\gregory.tall\Documents\GitHub\cdscntapimkpwebapp1\obj\Debug\netcoreapp1.0\dotnetmvcdotnet-compile.deps.json",dotnetmvc.deps.json
 "C:\Users\gregory.tall\Documents\GitHub\cdscntapimkpwebapp1\InspectorBehavior.cs"
 "C:\Users\gregory.tall\Documents\GitHub\cdscntapimkpwebapp1\MyMessageInspector.cs"
