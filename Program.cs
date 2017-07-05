@@ -15,9 +15,8 @@ namespace cdscntapimkpwebapp1
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 //.UseIISIntegration()
-                .UseStartup<Startup>()
-                
-               // .UseUrls(args[0])
+                .UseStartup<Startup>()                
+                .UseUrls(args[0])
                 .Build();
 
             host.Run();
