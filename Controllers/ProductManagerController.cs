@@ -44,15 +44,15 @@ namespace cdscntapimkpwebapp1.Controllers
         {
             if (MyRequest != null)
             {
-                HttpContext.Session.SetString(SessionLogin, MyRequest._Login);
-                HttpContext.Session.SetString(SessionToken, MyRequest._Autentication._Token);
-                HttpContext.Session.SetString(SessionEnvironment, MyRequest._EnvironmentSelected.ToString());
+              //  HttpContext.Session.SetString(SessionLogin, MyRequest._Login);
+                //HttpContext.Session.SetString(SessionToken, MyRequest._Autentication._Token);
+                //HttpContext.Session.SetString(SessionEnvironment, MyRequest._EnvironmentSelected.ToString());
             }
         }
         public ActionResult GetAllAllowedCategoryTreeRequest()
         {
             Request MyRequest = new GetAllAllowedCategoryTreeRequest();
-            GetSessionData(ref MyRequest);
+            //GetSessionData(ref MyRequest);
             return View(MyRequest);
         }
         [HttpPost]
