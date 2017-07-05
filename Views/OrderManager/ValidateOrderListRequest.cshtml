@@ -1,0 +1,196 @@
+﻿<fieldset>
+    @using cdscntapimkpwebapp1.Enumeration
+    @using CdscntMkpApiReference_Prod
+    @model cdscntapimkpwebapp1.Models.OrderManager.ValidateOrderListRequest
+
+
+
+
+    @{
+        ViewData["Title"] = "Index";
+    }
+
+
+    @using (Html.BeginForm("ValidateOrderListResponse", "OrderManager", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        <br />
+        <br />
+        <h2>ValidateOrderList</h2>
+        <div class="col-xs-3">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Identification</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <br />
+                        <div role="tabpanel" class="tab-pane active" id="loginTab">
+                            <div class="form-group">
+                                <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+                                @Html.TextBoxFor(model => model._Login, new { @id = "login", @class = "form-control", @placeholder = "Login" })
+                            </div>
+                            <div class="form-group">
+                                <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                                @Html.TextBoxFor(model => model._Password, new { @id = "password", @class = "form-control", @placeholder = "Password", @type = "password" })
+                            </div>
+                            <div class="form-group">
+                                <label for="token"><span class="glyphicon glyphicon-qrcode"></span> Token</label>
+                                @Html.TextBoxFor(model => model._Token, new { @id = "token", @class = "form-control", @placeholder = "Token" })
+                            </div>
+                            <div class="form-group">
+                                <label for="Environment"><span class="glyphicon glyphicon-qrcode"></span> Environment</label>
+                                <br />
+                                <p class="nav navbar-nav navbar-left">
+                                    @Html.DropDownListFor(m => m._EnvironmentSelected, new SelectList(Enum.GetValues(typeof(EnvironmentEnum))),
+                    "Select Environment")
+                                </p>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Parameters</h3>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model._ValidateOrderListMessage.OrderList[0].OrderNumber, new { @id = "OrderNumber", @class = "form-control", @placeholder = "OrderNumber" })
+                            </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model._ValidateOrderListMessage.OrderList[0].CarrierName, new { @id = "CarrierName", @class = "form-control", @placeholder = "CarrierName" })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model._ValidateOrderListMessage.OrderList[0].TrackingNumber, new { @id = "TrackingNumber", @class = "form-control", @placeholder = "TrackingNumber" })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model._ValidateOrderListMessage.OrderList[0].TrackingUrl, new { @id = "TrackingUrl", @class = "form-control", @placeholder = "TrackingUrl" })
+                        </div>
+                        <div class="form-group">
+                            @Html.DropDownListFor(m => m._ValidateOrderListMessage.OrderList[0].OrderState, new SelectList(Enum.GetValues(typeof(OrderStateEnum))), "OrderState")
+                            </div>
+                            <div id="orderline_fields">
+                                <h3>Add OrderLines</h3>
+                            </div>
+                            <table  cellpadding="10" >
+                                
+                                <tr>
+                                    <td>
+                                        <div class="col-sm-3 nopadding">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="SellerProductId" name="SellerProductId[]" value="" placeholder="SellerProductId">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="col-sm-3 nopadding">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <select class="form-control" id="ProductCondition" name="ProductCondition[]">
+                                                        <option value="6">New</option>
+                                                        <option value="1">LikeNew</option>
+                                                        <option value="2">VeryGoodState</option>
+                                                        <option value="3">GoodState</option>
+                                                        <option value="4">AverageState</option>
+                                                        <option value="5">Refurbished</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="col-sm-3 nopadding">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <select class="form-control" id="AcceptationState" name="AcceptationState[]" >
+
+                                                        <option value="1">AcceptedBySeller</option>
+                                                        <option value="2">RefusedBySeller</option>
+                                                        <option value="3">ShippedBySeller</option>
+                                                        <option value="5">ShipmentRefusedBySeller</option>
+                                                    </select>
+                                                    <div class="input-group-btn">
+                                                        <button class="btn btn-success" type="button" onclick="orderline_fields();"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="clear"></div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                  
+                </div>
+
+                <!-- </td>
+                        </tr>
+
+                </table>-->
+            </div>
+    
+            <div class="form-group">
+                <input type="submit" value="Send" class="btn btn-info" />
+                <input type="reset" value="Reset" class="btn btn-default" />
+            </div>
+            }
+</fieldset>
+
+
+
+@section scripts 
+    {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var next = 1;
+                $(".add-more").click(function (e) {
+                    e.preventDefault();
+                    var addto = "#field" + next;
+                    var addRemove = "#field" + (next);
+                    next = next + 1;
+                    var newIn = '<input autocomplete="off" class="input form-control" id="field' + next + '" name="field' + next + '" type="text">';
+                    var newInput = $(newIn);
+                    var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-danger remove-me" >-</button></div><div id="field">';
+                    var removeButton = $(removeBtn);
+                    $(addto).after(newInput);
+                    $(addRemove).after(removeButton);
+                    $("#field" + next).attr('data-source', $(addto).attr('data-source'));
+                    $("#count").val(next);
+
+                    $('.remove-me').click(function (e) {
+                        e.preventDefault();
+                        var fieldNum = this.id.charAt(this.id.length - 1);
+                        var fieldID = "#field" + fieldNum;
+                        $(this).remove();
+                        $(fieldID).remove();
+                    });
+                });
+
+
+
+            });
+
+            var room = 1;
+            function orderline_fields() {
+
+                room++;
+                var objTo = document.getElementById('orderline_fields')
+                var divtest = document.createElement("div");
+                divtest.setAttribute("class", "form-group removeorderline" + room);
+                var rdiv = 'removeorderline' + room;
+                divtest.innerHTML = '<tr><td><div class="col-sm-3 nopadding"><div class="form-group"><input type="text" class="form-control" id="SellerProductId" name="SellerProductId[]" value="" placeholder="SellerProductId"></div></div></td><td><div class="col-sm-3 nopadding"><div class="form-group"><div class="input-group"><select class="form-control" id="ProductCondition" name="ProductCondition[]"><option value="6">New</option><option value="1">LikeNew</option><option value="2">VeryGoodState</option><option value="3">GoodState</option><option value="4">AverageState</option><option value="5">Refurbished</option></select></div></div></div></td><td><div class="col-sm-3 nopadding"><div class="form-group"><div class="input-group"><select class="form-control" id="AcceptationState" name="AcceptationState[]"><option value="1">AcceptedBySeller</option><option value="2">RefusedBySeller</option><option value="3">ShippedBySeller</option><option value="5">ShipmentRefusedBySeller</option></select><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="remove_orderline_fields(' + room + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div></div></td><td><div class="clear"></div></td></tr>';
+                objTo.appendChild(divtest)
+            }
+            function remove_orderline_fields(rid) {
+                $('.removeorderline' + rid).remove();
+            }
+        </script>
+    }
