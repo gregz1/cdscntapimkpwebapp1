@@ -32,7 +32,7 @@ namespace cdscntapimkpwebapp1.Controllers
 
         public void GetSessionData(ref Request MyRequest)
         {
-            if (HttpContext.Session.GetString(SessionToken) != null)
+           // if (HttpContext.Session.GetString(SessionToken) != null)
             {
               //  MyRequest._Login = HttpContext.Session.GetString(SessionLogin);
 //                MyRequest._Token = HttpContext.Session.GetString(SessionToken);
