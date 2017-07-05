@@ -34,9 +34,9 @@ namespace cdscntapimkpwebapp1.Controllers
         {
             if (HttpContext.Session.GetString(SessionToken) != null)
             {
-                MyRequest._Login = HttpContext.Session.GetString(SessionLogin);
-                MyRequest._Token = HttpContext.Session.GetString(SessionToken);
-                MyRequest._EnvironmentSelected = (EnvironmentEnum)Enum.Parse(typeof(EnvironmentEnum),HttpContext.Session.GetString(SessionEnvironment));
+              //  MyRequest._Login = HttpContext.Session.GetString(SessionLogin);
+//                MyRequest._Token = HttpContext.Session.GetString(SessionToken);
+  //              MyRequest._EnvironmentSelected = (EnvironmentEnum)Enum.Parse(typeof(EnvironmentEnum),HttpContext.Session.GetString(SessionEnvironment));
             }           
 
         }
