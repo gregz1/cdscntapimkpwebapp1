@@ -12,12 +12,14 @@ namespace cdscntapimkpwebapp1.Models
         public string _Token { get; set; }
         public EnvironmentEnum _EnvironmentSelected { get; set; }
         public Dictionary<string, string> _Parameters { get; set; }
-
+        public Dictionary<string, bool> _ParametersBool { get; set; }
+        
         public HeaderMessage _HeaderMessage;
         public Request()
         {
             _Autentication = new Autentication();
-            _Parameters = new Dictionary<string, string>();            
+            _Parameters = new Dictionary<string, string>();
+            _ParametersBool = new Dictionary<string, bool>();
         }
 
         public void GetHeaderMessage()

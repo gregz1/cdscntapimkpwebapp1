@@ -40,10 +40,17 @@ namespace cdscntapimkpwebapp1.Models
                     realm = "https://wsvc.cdiscount.com/MarketplaceAPIService.svc";
 
                 }
-                else {
+                else if (_Environment == EnvironmentEnum.Preproduction)
+                {
 
                     svcIssue = "https://sts.preprod-cdiscount.com/users/httpIssue.svc";
                     realm = "https://wsvc.preprod-cdiscount.com/MarketplaceAPIService.svc";
+                }
+                else if (_Environment == EnvironmentEnum.Recette)
+                {
+
+                    svcIssue = "https://sts.Recette-cdiscount.com/users/httpIssue.svc";
+                    realm = "https://wsvc.Recette-cdiscount.com/MarketplaceAPIService.svc";
                 }
                 string encoded = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", _Login, _Password)));
 

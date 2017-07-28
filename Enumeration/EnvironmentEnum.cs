@@ -5,9 +5,9 @@ namespace cdscntapimkpwebapp1.Enumeration
     {
         Production,
         Preproduction,
-        Local/*,
+        Local,
         Recette,
-        Dev,
+        /*Dev,
         Sandbox,
         Local*/
     }

@@ -16,12 +16,12 @@ namespace cdscntapimkpwebapp1.Models
         public GetProductListByIdentifierMessage(Request MyRequest)
         {
             _Environment = MyRequest._EnvironmentSelected;
-            GetService();
+            GetService(MyRequest);
             _IdentifierRequest = new IdentifierRequest();
             _IdentifierRequest.IdentifierType = IdentifierTypeEnum.EAN;
             _IdentifierRequest.ValueList = MyRequest._Parameters["EAN"].Split(';');
             _ProductListByIdentifierMessage = _MarketplaceAPIService.GetProductListByIdentifierAsync(MyRequest._HeaderMessage, _IdentifierRequest);
-            XmlSerializer xmlSerializer = new XmlSerializer(_ProductListByIdentifierMessage.Result.GetType());
+            //XmlSerializer xmlSerializer = new XmlSerializer(_ProductListByIdentifierMessage.Result.GetType());
                             
             _RequestXML = _RequestInterceptor.LastRequestXML;
             _MessageXML = _RequestInterceptor.LastResponseXML;

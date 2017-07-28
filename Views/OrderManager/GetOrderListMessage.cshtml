@@ -8,15 +8,23 @@
 }
 
 
-@using (Html.BeginForm("ValidateOrderListRequest", "OrderManager", FormMethod.Post, new { enctype = "multipart/form-data" }))
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<h4>GetOrderList</h4>
+@if (Model._OperationSuccess)
 {
 
-<br />
-<br />
-<br />
-<div>
-    <h4>GetOrderList</h4>
-    <hr />
+    <div class="alert alert-success">
+        <strong>Success!</strong>
+    </div>
+<div><hr />
+    <div id="MessageXML2" class="panel panel-default">
+    </div>
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
@@ -35,7 +43,7 @@
         </div>
         <div id="MessageXML" class="panel-collapse collapse">
             <div class="panel-body"><pre lang="xml"> @Html.DisplayFor(model => model._MessageXML)</pre></div>
-        </div>
+        </div>        
     </div>
 </div>
     <br /><div class="form-group">
@@ -46,46 +54,90 @@
             </div>
             <div class="panel-body">
                 <br />
-
-                <table class="table-responsive">
-                    <thead>
-                        <tr>
-                            <th>OrderNumber</th>
-                            <th>OrderState</th>
-                            <th>OrderLineList</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (Order MyOrder in Model._OrderListMessage.Result.OrderList)
-                        {
+                <div class="table-responsive">
+                    <table class="table-striped">
+                        <thead>
                             <tr>
-                                <td>@MyOrder.OrderNumber</td>
-                                <td>@MyOrder.OrderState</td>
-                                <td>
-                                    @foreach (OrderLine MyOrderLine in MyOrder.OrderLineList)
-                                    {
-                                        <ul>
-                                            <li>SellerProductId : @MyOrderLine.SellerProductId</li>
-                                            <li>Ean : @MyOrderLine.ProductEan</li>
-                                            <li>AcceptationState : @MyOrderLine.AcceptationState</li>
-                                            <li>ProductCondition : @MyOrderLine.ProductCondition</li>
-                                        </ul>
-                                    }
-                                </td>
+                                <th>OrderNumber</th>
+                                <th>OrderState</th>
+                                <th>OrderLineList</th>
                             </tr>
+                        </thead>
+                        <tbody>
+                        @if (Model._OrderListMessage.Result != null)
+                        {
+                            @foreach (Order MyOrder in Model._OrderListMessage.Result.OrderList)
+                            {
+                                <tr>
+                                    <td>@MyOrder.OrderNumber</td>
+                                    <td>@MyOrder.OrderState</td>
+                                    <td>
+                                        @foreach (OrderLine MyOrderLine in MyOrder.OrderLineList)
+                                        {
+                                            <ul>
+                                                <li>ProductId : @MyOrderLine.ProductId</li>
+                                                <li>SellerProductId : @MyOrderLine.SellerProductId</li>
+                                                <li>Ean : @MyOrderLine.ProductEan</li>
+                                                <li>AcceptationState : @MyOrderLine.AcceptationState</li>
+                                                <li>ProductCondition : @MyOrderLine.ProductCondition</li>
+                                            </ul>
+                                        }
+                                    </td>
+                                </tr>
+                            }
                         }
-                    </tbody>
+                        </tbody>
 
 
-</table>
+                    </table>
+                </div>
             </div>
         </div>
 
     </div>
 </div>
+}
+else if (Model._ErrorMessage != "")
+{
+    <div class="alert alert-danger">
+        <strong>Failed!</strong> : error message : @Model._ErrorMessage
+    </div>
+    <div>
+        <hr />
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" href="#RequestXML">Click  to display the XML Request</a>
+                </h4>
+            </div>
+            <div id="RequestXML" class="panel-collapse collapse">
+                <div class="panel-body"><pre lang="xml"> @Html.DisplayFor(model => model._RequestXML)</pre></div>
+            </div>
+        </div>
+        <div class="panel panel-default">@Html.DisplayFor(model => model._RequestXML)
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" href="#MessageXML">Click  to display the XML Message</a>
+                </h4>
+            </div>
+            <div id="MessageXML" class="panel-collapse collapse">
+                <div class="panel-body"><pre lang="xml"> @Html.DisplayFor(model => model._MessageXML)</pre></div>
+            </div>           
+        </div>
+    </div>
 
-    <div class="form-group">
-        <input type="submit" value="Send" class="btn btn-info" />
-        <input type="reset" value="Reset" class="btn btn-default" />
+}
+else
+{
+    <div class="alert alert-warning">
+        <strong>Warning!</strong> error message : @Model._ErrorMessage.
     </div>
 }
+
+<script>
+
+    var editor = CodeMirror(document.getElementById("MessageXML2"), {
+        mode: "xml",
+        height : "auto"
+    });
+</script>

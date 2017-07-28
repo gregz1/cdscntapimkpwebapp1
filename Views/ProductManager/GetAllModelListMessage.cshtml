@@ -9,30 +9,12 @@
 <br />
 <div>
     <div class="container">
-        <h2>GetAllModelListMessage</h2>
-
+      <h4>GetAllModelListMessage</h4>
       @if (!Model._OperationSuccess)
       {
-
         <div class="alert alert-danger">
             <strong>Failed!</strong> : @Model. error message : @Model._ErrorMessage
         </div>
-      }
-      else if(Model._ErrorMessage!="")
-      {
-        <div class="alert alert-warning">
-            <strong>Warning!</strong> error message : @Model._ErrorMessage.
-        </div>
-      }
-      else
-      {
-        <div class="alert alert-success">
-            <strong>Success!</strong>
-        </div>
-      }
-
-
-
         <div class="panel-group">
             <div class="panel panel-default">
                 @if (Model._RequestXML!="")
@@ -61,6 +43,21 @@
                     </div>
                 }
         </div>
+      }
+      else if (Model._ErrorMessage != "")
+      {
+        <div class="alert alert-warning">
+            <strong>Warning!</strong> error message : @Model._ErrorMessage.
+        </div>
+      }
+      else
+      {
+        <div class="alert alert-success">
+            <strong>Success!</strong>
+        </div>
+      }
+
+
     </div>
 
     <div>

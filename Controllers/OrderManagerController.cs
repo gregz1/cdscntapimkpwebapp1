@@ -115,6 +115,27 @@ namespace cdscntapimkpwebapp1.Controllers
             SetSessionData(MyRequest);
             return View(new GetOrderListMessage(MyRequest));
         }
+        public ActionResult ManageParcelRequest()
+        {
+            Request MyRequest = new MyManageParcelRequest();
+            /*   if (HttpContext.Session.GetString(SessionToken) != null)
+               {
+                   MyRequest._Login = HttpContext.Session.GetString(SessionLogin);
+                   MyRequest._Token = HttpContext.Session.GetString(SessionToken);
+                   MyRequest._EnvironmentSelected = (EnvironmentEnum)Enum.Parse(typeof(EnvironmentEnum), HttpContext.Session.GetString(SessionEnvironment));
+               }*/
+            return View(MyRequest);
+        }
+        [HttpPost]
+        public ActionResult ManageParcelMessage(GetOrderListRequest MyRequest)
+        {
+
+            MyRequest.GetHeaderMessage();
+            SetSessionData(MyRequest);
+            return View(new GetOrderListMessage(MyRequest));
+        }
+
+
 
     }
 }

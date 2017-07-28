@@ -38,38 +38,7 @@
                             <label for="token"><span class="glyphicon glyphicon-qrcode"></span> Environment</label>
                             <br />
                             <p class="nav navbar-nav navbar-left">
-                                @{
-                                    var sessionEnv = Model._EnvironmentSelected;
-                                    EnvironmentEnum envName;
-                                    if (sessionEnv == null)
-                                    {
-                                        envName = EnvironmentEnum.Preproduction;
-                                    }
-                                    else
-                                    {
-                                        try
-                                        {
-                                            envName = (EnvironmentEnum)sessionEnv;
-                                        }
-                                        catch (InvalidCastException ex)
-                                        {
-                                            envName = EnvironmentEnum.Preproduction;
-                                        }
-                                    }
-                                }
-                                <select class="form-control" id="envName">
-                                    @foreach (EnvironmentEnum env in Enum.GetValues(typeof(EnvironmentEnum)))
-                                    {
-                                        if (env == envName)
-                                        {
-                                            <option value="@env" selected="selected">@env</option>
-                                        }
-                                        else
-                                        {
-                                            <option value="@env">@env</option>
-                                        }
-                                    }
-                                </select>
+                                @Html.DropDownListFor(m => m._EnvironmentSelected, new MultiSelectList(Enum.GetValues(typeof(EnvironmentEnum))), "Select Environment")<br />                                
                             </p>
                             <br />
                         </div>
@@ -84,7 +53,6 @@
                 <h3 class="panel-title">Parameters</h3>
             </div>
             <div class="panel-body">
-
                 @foreach (var parameter in Model._Parameters)
                 {
                     <br /><label for="item">@parameter.Key</label>
