@@ -167,33 +167,34 @@ namespace cdscntapimkpwebapp1.Controllers
             SetSessionData(MyRequest);
             return View(new GetAllModelListMessage(MyRequest));
         }
-        /*public  ActionResult GetModelListRequest() 
-         {
-            Request MyRequest = new GetModelListRequest();
-            GetSessionData(ref MyRequest);
-            return View(MyRequest);
-          }
-        [HttpPost]
-        public ActionResult GetModelListMessage(GetBrandListRequest MyRequest)
+        public ActionResult GetProductPackageMatchingFileDataRequest()
         {
-            MyRequest.GetHeaderMessage();
-            SetSessionData(MyRequest);
-            return View(new GetModelListMessage(MyRequest));
-        }
-
-        public ActionResult GetProductPackageMatchingFileDataRequest() 
-         {
             Request MyRequest = new GetProductPackageMatchingFileDataRequest();
             GetSessionData(ref MyRequest);
             return View(MyRequest);
-         }
+        }
         [HttpPost]
         public ActionResult GetProductPackageMatchingFileDataMessage(GetBrandListRequest MyRequest)
         {
             MyRequest.GetHeaderMessage();
             SetSessionData(MyRequest);
             return View(new GetProductPackageMatchingFileDataMessage(MyRequest));
-        }*/
-       
+        }
+        public  ActionResult GetModelListRequest() 
+         {
+            Request MyRequest = new GetModelListRequest();
+            GetSessionData(ref MyRequest);
+            return View(MyRequest);
+          }
+        [HttpPost]
+        public ActionResult GetModelListMessage(GetModelListRequest MyRequest)
+        {
+            MyRequest.GetHeaderMessage();
+            SetSessionData(MyRequest);
+            return View(new GetModelListMessage(MyRequest));
+        }
+
+      
+
     }
 }

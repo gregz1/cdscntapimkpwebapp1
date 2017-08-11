@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using CdscntMkpApiReference_Prod;
-using System.Xml.Serialization;
+
 
 namespace cdscntapimkpwebapp1.Models
 {
@@ -14,15 +13,36 @@ namespace cdscntapimkpwebapp1.Models
 
         public GetModelListMessage(Request MyRequest)
         {
-            _Environment = MyRequest._EnvironmentSelected;
-            GetService();
-            _ModelFilter = new ModelFilter();
-            _ModelFilter.CategoryCodeList = MyRequest._Parameters["Values"].Split(';');
-            var _ProductListMessage = _MarketplaceAPIService.GetModelListAsync(MyRequest._HeaderMessage, _ModelFilter);
-            XmlSerializer xmlSerializer = new XmlSerializer(_ProductListMessage.Result.GetType());
+            try
+            {
+                _Environment = MyRequest._EnvironmentSelected;
+                GetService();
+                _ModelFilter = new ModelFilter();
+                _ModelFilter.CategoryCodeList = MyRequest._Parameters["Values"].Split(';');
+                var _ModelListMessage = _MarketplaceAPIService.GetModelListAsync(MyRequest._HeaderMessage, _ModelFilter);
 
-            _RequestXML = _RequestInterceptor.LastRequestXML;
-            _MessageXML = _RequestInterceptor.LastResponseXML;
+                _RequestXML = _RequestInterceptor.LastRequestXML;
+                _MessageXML = _RequestInterceptor.LastResponseXML;
+
+                if (_ModelListMessage != null)
+                {
+                    if (_ModelListMessage.Result != null)
+                    {
+                        _ErrorMessage = _ModelListMessage.Result.ErrorMessage;
+                        if (_ModelListMessage.Result.ErrorList != null)
+                            _ErrorList = _ModelListMessage.Result.ErrorList;
+                    }
+                }
+            }
+
+            catch (System.Exception ex)
+            {
+                _OperationSuccess = false;
+                _ErrorMessage = ex.Message;
+                _ErrorType = ex.HelpLink;
+
+            }
+
         }
     }
 }

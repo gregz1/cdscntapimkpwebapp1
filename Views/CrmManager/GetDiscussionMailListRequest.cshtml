@@ -52,21 +52,22 @@
 
         </div>
     </div>
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <h3 class="panel-title">Parameters</h3>
+    <div class="col-xs-5">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Parameters</h3>
+            </div>
+            <div class="panel-body">
+
+                <label for="DiscussionIds"><span class="glyphicon glyphicon-comment"></span> DiscussionIds</label>
+                @Html.TextBoxFor(model => model._GetDiscussionMailListRequest.DiscussionIds, new { @id = "DiscussionIds", @class = "form-control", @placeholder = "DiscussionIds" })
+
+            </div>
         </div>
-        <div class="panel-body">
-
-            <label for="DiscussionIds"><span class="glyphicon glyphicon-comment"></span> DiscussionIds</label>
-            @Html.TextBoxFor(model => model._GetDiscussionMailListRequest.DiscussionIds, new { @id = "DiscussionIds", @class = "form-control", @placeholder = "DiscussionIds" })
-
         </div>
-    </div>
 
-
-    <div class="form-group">
-        <input type="submit" value="Send" class="btn btn-info" />
-        <input type="reset" value="Reset" class="btn btn-default" />
-    </div>
-}
+        <div class="form-group">
+            <input type="submit" value="Send" class="btn btn-info" />
+            <input type="reset" value="Reset" class="btn btn-default" />
+        </div>
+        }

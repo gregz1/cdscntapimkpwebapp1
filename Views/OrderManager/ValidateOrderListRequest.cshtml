@@ -53,6 +53,7 @@
 
             </div>
         </div>
+        <div class="col-xs-5">
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <h3 class="panel-title">Parameters</h3>
@@ -61,7 +62,7 @@
                     <div class="panel-body">
                         <div class="form-group">
                             @Html.TextBoxFor(model => model._ValidateOrderListMessage.OrderList[0].OrderNumber, new { @id = "OrderNumber", @class = "form-control", @placeholder = "OrderNumber" })
-                            </div>
+                        </div>
                         <div class="form-group">
                             @Html.TextBoxFor(model => model._ValidateOrderListMessage.OrderList[0].CarrierName, new { @id = "CarrierName", @class = "form-control", @placeholder = "CarrierName" })
                         </div>
@@ -73,50 +74,51 @@
                         </div>
                         <div class="form-group">
                             @Html.DropDownListFor(m => m._ValidateOrderListMessage.OrderList[0].OrderState, new SelectList(Enum.GetValues(typeof(OrderStateEnum))), "OrderState")
+                        </div>
+                        <div id="orderline_fields">
+                            <h3>Add OrderLines</h3>
+                        </div>
+                        <div>
+                            <div class="col-sm-3 nopadding">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="SellerProductId" name="SellerProductId[]" value="SellerProductId" placeholder="SellerProductId">
+                                </div>
                             </div>
-                            <div id="orderline_fields">
-                                <h3>Add OrderLines</h3>
+                            <div class="col-sm-3 nopadding">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <select class="form-control" id="ProductCondition" value="New" name="ProductCondition[]">
+                                            <option value="6">New</option>
+                                            <option value="1">LikeNew</option>
+                                            <option value="2">VeryGoodState</option>
+                                            <option value="3">GoodState</option>
+                                            <option value="4">AverageState</option>
+                                            <option value="5">Refurbished</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                        <div class="col-sm-3 nopadding">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="SellerProductId" name="SellerProductId[]" value="SellerProductId" placeholder="SellerProductId">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3 nopadding">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <select class="form-control" id="ProductCondition" value="New" name="ProductCondition[]">
-                                                        <option value="6">New</option>
-                                                        <option value="1">LikeNew</option>
-                                                        <option value="2">VeryGoodState</option>
-                                                        <option value="3">GoodState</option>
-                                                        <option value="4">AverageState</option>
-                                                        <option value="5">Refurbished</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3 nopadding">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <select class="form-control" id="AcceptationState" value="AcceptedBySeller" name="AcceptationState[]" >
+                            <div class="col-sm-3 nopadding">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <select class="form-control" id="AcceptationState" value="AcceptedBySeller" name="AcceptationState[]">
 
-                                                        <option value="1">AcceptedBySeller</option>
-                                                        <option value="2">RefusedBySeller</option>
-                                                        <option value="3">ShippedBySeller</option>
-                                                        <option value="5">ShipmentRefusedBySeller</option>
-                                                    </select>
-                                                    <div class="input-group-btn">
-                                                        <button class="btn btn-success" type="button" onclick="orderline_fields();"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div><br />   
-                                        <div class="clear">
-                                    </div>    </div>  
-</div>
-                  
+                                            <option value="1">AcceptedBySeller</option>
+                                            <option value="2">RefusedBySeller</option>
+                                            <option value="3">ShippedBySeller</option>
+                                            <option value="5">ShipmentRefusedBySeller</option>
+                                        </select>
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-success" type="button" onclick="orderline_fields();"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><br />
+                            <div class="clear">
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
                 <!-- </td>
@@ -124,7 +126,8 @@
 
                 </table>-->
             </div>
-    
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Send" class="btn btn-info" />
                 <input type="reset" value="Reset" class="btn btn-default" />

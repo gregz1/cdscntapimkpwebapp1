@@ -14,9 +14,7 @@ namespace cdscntapimkpwebapp1.Models
             _hasParameters = true;
 
             _Autentication = new Autentication();
-
-            _ProductFilter = new ProductFilter();
-
+                 
             _Parameters = new Dictionary<string, string>();
             _Parameters.Add("PackageID", "");
         }        
