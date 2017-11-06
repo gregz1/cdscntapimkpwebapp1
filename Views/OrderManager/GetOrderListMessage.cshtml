@@ -8,102 +8,21 @@
 }
 
 
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-<h4>GetOrderList</h4>
-@if (Model._OperationSuccess)
-{
+    <h4>GetOrderList</h4>
+    @if (Model._OperationSuccess)
+    {
 
-    <div class="alert alert-success">
-        <strong>Success!</strong>
-    </div>
-<div><hr />
-    <div id="MessageXML2" class="panel panel-default">
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a data-toggle="collapse" href="#RequestXML">Click  to display the XML Request</a>
-            </h4>
+        <div class="alert alert-success">
+            <strong>Success!</strong>
         </div>
-        <div id="RequestXML" class="panel-collapse collapse">
-            <div class="panel-body"><pre lang="xml"> @Html.DisplayFor(model => model._RequestXML)</pre></div>
-        </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a data-toggle="collapse" href="#MessageXML">Click  to display the XML Message</a>
-            </h4>
-        </div>
-        <div id="MessageXML" class="panel-collapse collapse">
-            <div class="panel-body"><pre lang="xml"> @Html.DisplayFor(model => model._MessageXML)</pre></div>
-        </div>        
-    </div>
-</div>
-    <br /><div class="form-group">
-    <div class="panel panel-default">
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <h3 class="panel-title">Order List</h3>
-            </div>
-            <div class="panel-body">
-                <br />
-                <div class="table-responsive">
-                    <table class="table-striped">
-                        <thead>
-                            <tr>
-                                <th>OrderNumber</th>
-                                <th>OrderState</th>
-                                <th>OrderLineList</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @if (Model._OrderListMessage.Result != null)
-                        {
-                            @foreach (Order MyOrder in Model._OrderListMessage.Result.OrderList)
-                            {
-                                <tr>
-                                    <td>@MyOrder.OrderNumber</td>
-                                    <td>@MyOrder.OrderState</td>
-                                    <td>
-                                        @foreach (OrderLine MyOrderLine in MyOrder.OrderLineList)
-                                        {
-                                            <ul>
-                                                <li>ProductId : @MyOrderLine.ProductId</li>
-                                                <li>SellerProductId : @MyOrderLine.SellerProductId</li>
-                                                <li>Ean : @MyOrderLine.ProductEan</li>
-                                                <li>AcceptationState : @MyOrderLine.AcceptationState</li>
-                                                <li>ProductCondition : @MyOrderLine.ProductCondition</li>
-                                            </ul>
-                                        }
-                                    </td>
-                                </tr>
-                            }
-                        }
-                        </tbody>
-
-
-                    </table>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-}
-else if (Model._ErrorMessage != "")
-{
-    <div class="alert alert-danger">
-        <strong>Failed!</strong> : error message : @Model._ErrorMessage
-    </div>
-    <div>
-        <hr />
+    <div><hr />
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
@@ -114,7 +33,7 @@ else if (Model._ErrorMessage != "")
                 <div class="panel-body"><pre lang="xml"> @Html.DisplayFor(model => model._RequestXML)</pre></div>
             </div>
         </div>
-        <div class="panel panel-default">@Html.DisplayFor(model => model._RequestXML)
+        <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" href="#MessageXML">Click  to display the XML Message</a>
@@ -122,22 +41,217 @@ else if (Model._ErrorMessage != "")
             </div>
             <div id="MessageXML" class="panel-collapse collapse">
                 <div class="panel-body"><pre lang="xml"> @Html.DisplayFor(model => model._MessageXML)</pre></div>
-            </div>           
+            </div>        
+        </div>        
+    
+    </div>
+        <br /><div class="form-group">
+        <div class="panel panel-default">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Order List</h3>
+                </div>
+                <div class="panel-body">
+                    <br />
+                    <div class="table-responsive">
+                        <table class="table-striped">
+                            <thead>
+                                <tr>
+                                    <th>OrderNumber</th>
+                                    <th>OrderState</th>
+                                    <th>OrderLineList</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @if (Model._OrderListMessage.Result != null)
+                            {
+                                @foreach (Order MyOrder in Model._OrderListMessage.Result.OrderList)
+                                {
+                                    <tr>
+                                        <td>@MyOrder.OrderNumber</td>
+                                        <td>@MyOrder.OrderState</td>
+                                        <td>
+                                            @foreach (OrderLine MyOrderLine in MyOrder.OrderLineList)
+                                            {
+                                                <ul>
+                                                    <li>ProductId : @MyOrderLine.ProductId</li>
+                                                    <li>SellerProductId : @MyOrderLine.SellerProductId</li>
+                                                    <li>Ean : @MyOrderLine.ProductEan</li>
+                                                    <li>AcceptationState : @MyOrderLine.AcceptationState</li>
+                                                    <li>ProductCondition : @MyOrderLine.ProductCondition</li>
+                                                </ul>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            </tbody>
+
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
+    }
+    else if (Model._ErrorMessage != "")
+    {
+        <div class="alert alert-danger">
+            <strong>Failed!</strong> : error message : @Model._ErrorMessage
+        </div>
+        <div>
+            <hr />
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#RequestXML">Click  to display the XML Request</a>
+                    </h4>
+                </div>
+                <div id="RequestXML" class="panel-collapse collapse">
+                    <div class="panel-body"><pre lang="xml"> @Html.DisplayFor(model => model._RequestXML)</pre></div>
+                </div>
+            </div>
+            <div class="panel panel-default">@Html.DisplayFor(model => model._RequestXML)
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#MessageXML">Click  to display the XML Message</a>
+                    </h4>
+                </div>
+                <div id="MessageXML" class="panel-collapse collapse">
+                    <div class="panel-body"><pre lang="xml"> @Html.DisplayFor(model => model._MessageXML)</pre></div>
+                </div>           
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="panel panel-default">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Order List</h3>
+                    </div>
+                    <div class="panel-body">
+                        <br />
+                        <div class="table-responsive">
+                            <table class="table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>OrderNumber</th>
+                                        <th>OrderState</th>
+                                        <th>OrderLineList</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model._OrderListMessage.Result != null)
+                                    {
+                                        @foreach (Order MyOrder in Model._OrderListMessage.Result.OrderList)
+                                        {
+                                            <tr>
+                                                <td>@MyOrder.OrderNumber</td>
+                                                <td>@MyOrder.OrderState</td>
+                                                <td>
+                                                    @foreach (OrderLine MyOrderLine in MyOrder.OrderLineList)
+                                                    {
+                                                        <ul>
+                                                            <li>ProductId : @MyOrderLine.ProductId</li>
+                                                            <li>SellerProductId : @MyOrderLine.SellerProductId</li>
+                                                            <li>Ean : @MyOrderLine.ProductEan</li>
+                                                            <li>AcceptationState : @MyOrderLine.AcceptationState</li>
+                                                            <li>ProductCondition : @MyOrderLine.ProductCondition</li>
+                                                        </ul>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
 
-}
-else
-{
-    <div class="alert alert-warning">
-        <strong>Warning!</strong> error message : @Model._ErrorMessage.
-    </div>
-}
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    }
+    else
+    {
+        <div class="alert alert-warning">
+            <strong>Warning!</strong> error message : @Model._ErrorMessage.
+        </div>
+        <div class="form-group">
+            <div class="panel panel-default">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Order List</h3>
+                    </div>
+                    <div class="panel-body">
+                        <br />
+                        <div class="table-responsive">
+                            <table class="table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>OrderNumber</th>
+                                        <th>OrderState</th>
+                                        <th>OrderLineList</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model._OrderListMessage.Result != null)
+                                    {
+                                        @foreach (Order MyOrder in Model._OrderListMessage.Result.OrderList)
+                                        {
+                                            <tr>
+                                                <td>@MyOrder.OrderNumber</td>
+                                                <td>@MyOrder.OrderState</td>
+                                                <td>
+                                                    @foreach (OrderLine MyOrderLine in MyOrder.OrderLineList)
+                                                    {
+                                                        <ul>
+                                                            <li>ProductId : @MyOrderLine.ProductId</li>
+                                                            <li>SellerProductId : @MyOrderLine.SellerProductId</li>
+                                                            <li>Ean : @MyOrderLine.ProductEan</li>
+                                                            <li>AcceptationState : @MyOrderLine.AcceptationState</li>
+                                                            <li>ProductCondition : @MyOrderLine.ProductCondition</li>
+                                                        </ul>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+
+<h4>@Html.ActionLink("Export your order list", "CreateReport", "OrderManager")</h4>
+<h4><a href="@Model._env.">Visit W3Schools</a></h4>
+
+
 
 <script>
 
-    var editor = CodeMirror(document.getElementById("MessageXML2"), {
+    var editor = CodeMirror(document.getElementById("RequestXML"), {
         mode: "xml",
-        height : "auto"
-    });
+        height: "auto",
+        value: "@Model._RequestXML.ToString()",
+        smartIndent: "true",
+        xml: "true",
+        htmlMode: "true"
+
+    }); 
+
+    function showCode() {
+        var text = editor.getValue();
+        alert(text);
+    }
 </script>

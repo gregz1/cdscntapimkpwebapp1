@@ -11,8 +11,7 @@ namespace cdscntapimkpwebapp1.Models
                 _Environment = MyRequest._EnvironmentSelected;
                 GetService();
                 var _ModelListMessage = _MarketplaceAPIService.GetAllModelListAsync(MyRequest._HeaderMessage);
-               // XmlSerializer xmlSerializer = new XmlSerializer(_ModelListMessage.Result.GetType());
-
+               
                 _RequestXML = _RequestInterceptor.LastRequestXML;
                 _MessageXML = _RequestInterceptor.LastResponseXML;
 

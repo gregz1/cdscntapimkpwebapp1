@@ -89,7 +89,7 @@
                 @foreach (var parameter in Model._Parameters)
                 {
                     <br /><label for="item">@parameter.Key</label>
-                    @Html.TextBoxFor(p => p._Parameters.Values, new { @id = "parameter", @class = "form-control", @placeholder = "parameter" })
+                    @Html.TextBoxFor(p => p._Parameters.Values, new { @id = "parameter", @class = "form-control", @placeholder = "parameter", Value = "Value" })
                 }
             </div>
         </div>

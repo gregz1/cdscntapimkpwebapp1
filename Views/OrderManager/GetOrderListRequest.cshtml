@@ -87,151 +87,151 @@
                         <input type="submit" value="Send" class="btn btn-info" />
                         <input type="reset" value="Reset" class="btn btn-default" />
                     </div>
+}
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var next = 1;
+            $('#sandbox-container .endCreationDate').datepicker({
+                todayBtn: true,
+                calendarWeeks: true,
+                todayHighlight: true,
+                beforeShowMonth: function (date) {
+                    if (date.getMonth() == 8) {
+                        return false;
                     }
-                    @section scripts {
-                        <script type="text/javascript">
-                            $(document).ready(function () {
-                                var next = 1;
-                                $('#sandbox-container .endCreationDate').datepicker({
-                                    todayBtn: true,
-                                    calendarWeeks: true,
-                                    todayHighlight: true,
-                                    beforeShowMonth: function (date) {
-                                        if (date.getMonth() == 8) {
-                                            return false;
-                                        }
-                                    }
-                                });
-                            })
-                            $(document).ready(function () {
+                }
+            });
+        })
+        $(document).ready(function () {
 
-                                $('#orderStatesEnum').multiselect({
-                                    includeSelectAllOption: true,
-                                    nonSelectedText: 'Selectionnez un filtre minimum',
-                                    //enableFiltering: true,
-                                    showCheckboxes: true,
-                                    showSelectedItems: true
-                                });
+            $('#orderStatesEnum').multiselect({
+                includeSelectAllOption: true,
+                nonSelectedText: 'Selectionnez un filtre minimum',
+                //enableFiltering: true,
+                showCheckboxes: true,
+                showSelectedItems: true
+            });
 
-                                $('#beginCreationDate,#beginModificationDate,#endCreationDate,#endModificationDate').datetimepicker({
-                                    autoclose: true,
-                                    //format: "yyyy/mm/dd",
-                                    format: 'yyyy-mm-dd hh:ii',
-                                    language: "fr",
-                                    todayHighlight: true,
-                                    //orientation: "top right"
-                                    minView: 1,
-                                });
+            $('#beginCreationDate,#beginModificationDate,#endCreationDate,#endModificationDate').datetimepicker({
+                autoclose: true,
+                //format: "yyyy/mm/dd",
+                format: 'yyyy-mm-dd hh:ii',
+                language: "fr",
+                todayHighlight: true,
+                //orientation: "top right"
+                minView: 1,
+            });
 
-                                $('#beginCreationDate').on("change", function () {
-                                    var dateToCopy = $(this).val();
-                                    if ($('#beginModificationDate').val() == "")
-                                        $('#beginModificationDate').val(dateToCopy);
-                                })
+            $('#beginCreationDate').on("change", function () {
+                var dateToCopy = $(this).val();
+                if ($('#beginModificationDate').val() == "")
+                    $('#beginModificationDate').val(dateToCopy);
+            })
 
-                                $('#endCreationDate').on("change", function () {
-                                    var dateToCopy = $(this).val();
-                                    if ($('#endModificationDate').val() == "")
-                                        $('#endModificationDate').val(dateToCopy);
-                                })
+            $('#endCreationDate').on("change", function () {
+                var dateToCopy = $(this).val();
+                if ($('#endModificationDate').val() == "")
+                    $('#endModificationDate').val(dateToCopy);
+            })
 
-                                $(function () {
-                                    $("input:file").change(function () {
-                                        if ($(this).val() != "")
-                                            $("input:submit").val("Mass Update with file");
-                                        else
-                                            $("input:submit").val("GetOrderList");
-                                    });
-                                });
+            $(function () {
+                $("input:file").change(function () {
+                    if ($(this).val() != "")
+                        $("input:submit").val("Mass Update with file");
+                    else
+                        $("input:submit").val("GetOrderList");
+                });
+            });
 
-                                $('#loginTab').click(function (e) {
-                                    e.preventDefault()
-                                    $(this).tab('show')
-                                    $("#token").val("");
-                                });
+            $('#loginTab').click(function (e) {
+                e.preventDefault()
+                $(this).tab('show')
+                $("#token").val("");
+            });
 
-                                $('#tokenTab').click(function (e) {
-                                    e.preventDefault()
-                                    $(this).tab('show')
-                                    $("#login").val("");
-                                    $("#password").val("");
-                                });
+            $('#tokenTab').click(function (e) {
+                e.preventDefault()
+                $(this).tab('show')
+                $("#login").val("");
+                $("#password").val("");
+            });
 
-                                $('form').bind("keypress", function (e) {
-                                    if (e.keyCode == 13) {
-                                        e.preventDefault();
-                                        return false;
-                                    }
-                                });
+            $('form').bind("keypress", function (e) {
+                if (e.keyCode == 13) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
 
-                                $("#sellerId").on('input', function (e) {
-                                    e.preventDefault();
-                                    if (e.keyCode == 13) {
-                                        return false;
-                                    }
-                                    $("#okBtn").hide();
-                                    $("#nokBtn").hide();
+            $("#sellerId").on('input', function (e) {
+                e.preventDefault();
+                if (e.keyCode == 13) {
+                    return false;
+                }
+                $("#okBtn").hide();
+                $("#nokBtn").hide();
 
-                                    var $this = $(this)
-                                    var delay = 2000;
-                                    clearTimeout($this.data('timer'));
-                                    $this.data('timer', setTimeout(function () {
-                                        $this.removeData('timer');
-                                        getToken();
-                                    }, delay));
-                                });
+                var $this = $(this)
+                var delay = 2000;
+                clearTimeout($this.data('timer'));
+                $this.data('timer', setTimeout(function () {
+                    $this.removeData('timer');
+                    getToken();
+                }, delay));
+            });
 
-                                $('#go').click(function () {
-                                    $("#okBtn").hide();
-                                    $("#nokBtn").hide();
-                                    getToken();
-                                    return false;
-                                });
+            $('#go').click(function () {
+                $("#okBtn").hide();
+                $("#nokBtn").hide();
+                getToken();
+                return false;
+            });
 
-                                $("#token_error").hide();
-                                $("#loadingBtn").hide();
-                                $("#okBtn").hide();
+            $("#token_error").hide();
+            $("#loadingBtn").hide();
+            $("#okBtn").hide();
 
-                                function getToken() {
-                                    var sellerId = $("#sellerId").val();
-                                    $("#loadingBtn").show();
-                                    $.ajax({
-                                        type: "GET",
-                                        url: '@Url.Action("GetUserToken", "OrderManager")',
-                                        contentType: "application/json; charset=utf-8",
-                                        data: {
-                                            "sellerId": sellerId
-                                        },
-                                        dataType: "json",
-                                        success: function (result) {
-                                            $("#loadingBtn").hide();
-                                            if (result.length != 32) {
-                                                errorToken(result);
-                                            } else {
-                                                $("#okBtn").show();
-                                                $("#nokBtn").hide();
-                                                $("#login").val("");
-                                                $("#password").val("");
-                                                $("#token").val(result);
-                                                $("#token_error").text("").hide();
-                                                $("#tokenTab").addClass('active');
-                                                $("#loginTab").removeClass("active")
-                                                $("#tokenO").addClass('active');
-                                                $("#loginO").removeClass("active")
-                                            }
-                                        },
-                                        error: function (result) {
-                                            errorToken(result);
-                                        }
-                                    });
-
-                                    function errorToken(result) {
-                                        $("#okBtn").hide();
-                                        $("#nokBtn").show();
-                                        $("#token_error").text(result).show();
-                                        $("#token").val("");
-                                    }
-                                };
-                            });
-                        </script>
+            function getToken() {
+                var sellerId = $("#sellerId").val();
+                $("#loadingBtn").show();
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("GetUserToken", "OrderManager")',
+                    contentType: "application/json; charset=utf-8",
+                    data: {
+                        "sellerId": sellerId
+                    },
+                    dataType: "json",
+                    success: function (result) {
+                        $("#loadingBtn").hide();
+                        if (result.length != 32) {
+                            errorToken(result);
+                        } else {
+                            $("#okBtn").show();
+                            $("#nokBtn").hide();
+                            $("#login").val("");
+                            $("#password").val("");
+                            $("#token").val(result);
+                            $("#token_error").text("").hide();
+                            $("#tokenTab").addClass('active');
+                            $("#loginTab").removeClass("active")
+                            $("#tokenO").addClass('active');
+                            $("#loginO").removeClass("active")
+                        }
+                    },
+                    error: function (result) {
+                        errorToken(result);
                     }
+                });
+
+                function errorToken(result) {
+                    $("#okBtn").hide();
+                    $("#nokBtn").show();
+                    $("#token_error").text(result).show();
+                    $("#token").val("");
+                }
+            };
+        });
+    </script>
+}
